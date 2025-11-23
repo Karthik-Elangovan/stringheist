@@ -22,7 +22,7 @@ def slugify(
     Examples:
         slugify("Hello, World!") -> "hello-world"
         slugify("Café au lait")  -> "cafe-au-lait" (default)
-        slugify("Café au lait", allow_unicode=True) -> "cafe-au-lait"
+        slugify("Café au lait", allow_unicode=True) -> "café-au-lait"
     """
     if not s:
         return ""
