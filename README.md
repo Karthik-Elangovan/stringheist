@@ -1,5 +1,5 @@
 # stringheist
-String Playfull
+String Playful
 
 ## Setup
 
