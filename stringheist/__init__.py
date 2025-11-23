@@ -20,7 +20,19 @@ def render_template(template, context):
     """
     def replace_variable(match):
         variable_path = match.group(1).strip()
+        
+        # Validate that variable_path is not empty
+        if not variable_path:
+            return match.group(0)
+        
         keys = variable_path.split('.')
+        
+        # Filter out empty keys (from consecutive dots or leading/trailing dots)
+        keys = [k for k in keys if k]
+        
+        # If no valid keys after filtering, return original
+        if not keys:
+            return match.group(0)
         
         value = context
         for key in keys:

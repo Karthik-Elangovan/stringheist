@@ -77,6 +77,29 @@ class TestRenderTemplate(unittest.TestCase):
         ctx = {"value": 42}
         result = render_template(tpl, ctx)
         self.assertEqual(result, "The answer is 42.")
+    
+    def test_empty_variable_name(self):
+        """Test that empty variable names are not substituted."""
+        tpl = "Hello, {{ }}!"
+        ctx = {"name": "Karthik"}
+        result = render_template(tpl, ctx)
+        self.assertEqual(result, "Hello, {{ }}!")
+    
+    def test_consecutive_dots(self):
+        """Test that consecutive dots in variable paths are handled gracefully."""
+        tpl = "Hello, {{ user..name }}!"
+        ctx = {"user": {"name": "Karthik"}}
+        result = render_template(tpl, ctx)
+        # Consecutive dots are filtered out, so this works
+        self.assertEqual(result, "Hello, Karthik!")
+    
+    def test_leading_trailing_dots(self):
+        """Test that leading/trailing dots are handled gracefully."""
+        tpl = "{{ .name }} and {{ name. }}"
+        ctx = {"name": "Karthik"}
+        result = render_template(tpl, ctx)
+        # Leading/trailing dots are filtered out, so this works
+        self.assertEqual(result, "Karthik and Karthik")
 
 
 if __name__ == '__main__':
