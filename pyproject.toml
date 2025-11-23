@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stringheist"
+version = "0.1.0"
+description = "A Python library for slugging, fuzzy matching, and templating."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Karthik Elangovan" }
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/Karthik-Elangovan/stringheist"
+Source = "https://github.com/Karthik-Elangovan/stringheist"
